@@ -1,7 +1,7 @@
 import Heading from "../ui/Heading";
 import Row from "../ui/Row";
 
-function Cabins() {
+export default function Cabins() {
   return (
     <Row type="horizontal">
       <Heading as="h1">All cabins</Heading>
@@ -9,5 +9,3 @@ function Cabins() {
     </Row>
   );
 }
-
-export default Cabins;

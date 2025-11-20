@@ -27,7 +27,7 @@ const Box = styled.div`
   }
 `;
 
-function PageNotFound() {
+export default function PageNotFound() {
   const moveBack = useMoveBack();
 
   return (
@@ -43,5 +43,3 @@ function PageNotFound() {
     </StyledPageNotFound>
   );
 }
-
-export default PageNotFound;
