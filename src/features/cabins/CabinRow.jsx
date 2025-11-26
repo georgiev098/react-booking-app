@@ -47,7 +47,7 @@ export default function CabinRow({ cabin }) {
   const {
     id: cabinId,
     name,
-    maxCapcity,
+    maxCapacity,
     regularPrice,
     discount,
     image,
@@ -71,7 +71,7 @@ export default function CabinRow({ cabin }) {
     <TableRow role="row">
       <Img src={image} />
       <Cabin>{name}</Cabin>
-      <div>Fits up to ${maxCapcity} guests.</div>
+      <div>Fits up to {maxCapacity} guests.</div>
       <Price>{formatCurrency(regularPrice)}</Price>
       <Discount>{formatCurrency(discount)}</Discount>
       <button onClick={() => mutate(cabinId)} disabled={isLoading}>
