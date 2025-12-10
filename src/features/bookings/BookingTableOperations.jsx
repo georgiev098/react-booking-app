@@ -2,7 +2,7 @@ import SortBy from "../../ui/SortBy";
 import Filter from "../../ui/Filter";
 import TableOperations from "../../ui/TableOperations";
 
-function BookingTableOperations() {
+export default function BookingTableOperations() {
   return (
     <TableOperations>
       <Filter
@@ -29,5 +29,3 @@ function BookingTableOperations() {
     </TableOperations>
   );
 }
-
-export default BookingTableOperations;
