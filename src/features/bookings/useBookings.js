@@ -24,14 +24,19 @@ export default function useBookings() {
     direction,
   };
 
+  // PAGINATION
+  const page = !searchParams.get("page") ? 1 : Number(searchParams.get("page"));
+
   const {
     isLoading,
-    data: bookings,
+    data = {},
     error,
   } = useQuery({
-    queryKey: ["bookings", filter, sortBy],
-    queryFn: () => getBookings({ filter, sortBy }),
+    queryKey: ["bookings", filter, sortBy, page],
+    queryFn: () => getBookings({ filter, sortBy, page }),
   });
 
-  return { isLoading, bookings, error };
+  const { bookings, count } = data;
+
+  return { isLoading, error, bookings, count };
 }
