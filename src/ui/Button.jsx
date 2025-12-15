@@ -23,6 +23,7 @@ const sizes = {
 const variations = {
   primary: css`
     color: var(--color-brand-50);
+    padding: 1rem;
     background-color: var(--color-brand-600);
 
     &:hover {
