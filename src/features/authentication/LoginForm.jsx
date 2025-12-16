@@ -6,7 +6,9 @@ import Form from "../../ui/Form";
 import Input from "../../ui/Input";
 import FormRow from "../../ui/FormRow";
 import Heading from "../../ui/Heading";
+import SpinnerMini from "../../ui/SpinnerMini";
 import Logo from "../../ui/Logo";
+import useLogin from "./useLogin";
 
 const LoginLayout = styled.main`
   min-height: 100vh;
@@ -42,12 +44,19 @@ const FullWidthButton = styled(Button)`
 `;
 
 export default function LoginForm() {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [email, setEmail] = useState("test@admin.com");
+  const [password, setPassword] = useState("password");
+  const { mutate: login, isLoading } = useLogin();
 
   function handleSubmit(e) {
     e.preventDefault();
     // login logic
+
+    if (!email || !password) {
+      return;
+    }
+
+    login({ email, password });
   }
 
   return (
@@ -67,6 +76,7 @@ export default function LoginForm() {
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             placeholder="you@example.com"
+            disabled={isLoading}
           />
         </FormRow>
 
@@ -78,12 +88,17 @@ export default function LoginForm() {
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             placeholder="••••••••"
+            disabled={isLoading}
           />
         </FormRow>
 
         <FormRow>
-          <FullWidthButton variation="primary" size="large">
-            Login
+          <FullWidthButton
+            variation="primary"
+            size="large"
+            disabled={isLoading}
+          >
+            {!isLoading ? "Login" : <SpinnerMini />}
           </FullWidthButton>
         </FormRow>
       </Form>
