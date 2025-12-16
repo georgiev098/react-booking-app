@@ -41,6 +41,7 @@ const variations = {
     }
   `,
   danger: css`
+    padding: 1rem;
     color: var(--color-red-100);
     background-color: var(--color-red-700);
 
