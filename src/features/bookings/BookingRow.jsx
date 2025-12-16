@@ -7,8 +7,9 @@ import Table from "../../ui/Table";
 import { formatCurrency } from "../../utils/helpers";
 import { formatDistanceFromNow } from "../../utils/helpers";
 import Menus from "../../ui/Menus";
-import { HiArrowDownOnSquare, HiEye } from "react-icons/hi2";
+import { HiArrowDownOnSquare, HiArrowUpOnSquare, HiEye } from "react-icons/hi2";
 import { useNavigate } from "react-router-dom";
+import useCheckout from "../check-in-out/useCheckout";
 
 const Cabin = styled.div`
   font-size: 1.6rem;
@@ -52,14 +53,19 @@ function BookingRow({
   },
 }) {
   const navigate = useNavigate();
+  const { mutate, isLoading } = useCheckout();
+
   const statusToTagName = {
     unconfirmed: "blue",
     "checked-in": "green",
     "checked-out": "silver",
   };
-
   const isCheckedIn = status === "checked-in";
   const isCheckedOut = status === "checked-out";
+
+  function handleCheckOut() {
+    mutate(bookingId);
+  }
 
   return (
     <Table.Row>
@@ -101,6 +107,15 @@ function BookingRow({
               onClick={() => navigate(`/checkin/${bookingId}`)}
             >
               Check in
+            </Menus.Button>
+          )}
+          {isCheckedIn && (
+            <Menus.Button
+              disabled={isLoading}
+              onClick={handleCheckOut}
+              icon={<HiArrowUpOnSquare />}
+            >
+              Check out
             </Menus.Button>
           )}
         </Menus.List>
