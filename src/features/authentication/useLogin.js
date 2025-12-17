@@ -9,11 +9,12 @@ export default function useLogin() {
 
   const { mutate, isLoading } = useMutation({
     mutationFn: ({ email, password }) => {
-      login({ email, password });
+      return login({ email, password });
     },
     onSuccess: (user) => {
-      queryClient.setQueriesData(["user"], user);
-      navigate("/");
+      console.log(user);
+      queryClient.setQueryData(["user"], user.user);
+      navigate("/", { replace: true });
     },
     onError: (err) => {
       console.error(err);
