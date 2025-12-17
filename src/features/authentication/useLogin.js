@@ -9,7 +9,6 @@ export default function useLogin() {
 
   const { mutate, isLoading } = useMutation({
     mutationFn: ({ email, password }) => {
-      console.log(email, password);
       login({ email, password });
     },
     onSuccess: (user) => {

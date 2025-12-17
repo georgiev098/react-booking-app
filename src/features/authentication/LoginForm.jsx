@@ -6,7 +6,7 @@ import Form from "../../ui/Form";
 import Input from "../../ui/Input";
 import FormRow from "../../ui/FormRow";
 import Heading from "../../ui/Heading";
-import SpinnerMini from "../../ui/SpinnerMini";
+import { SpinnerMini } from "../../ui/SpinnerMini";
 import Logo from "../../ui/Logo";
 import useLogin from "./useLogin";
 

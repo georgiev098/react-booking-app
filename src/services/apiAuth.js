@@ -24,3 +24,8 @@ export async function getCurrUser() {
 
   return user;
 }
+
+export async function logout() {
+  let { error } = await supabase.auth.signOut();
+  return error;
+}
