@@ -12,7 +12,6 @@ export default function useLogin() {
       return login({ email, password });
     },
     onSuccess: (user) => {
-      console.log(user);
       queryClient.setQueryData(["user"], user.user);
       navigate("/", { replace: true });
     },
