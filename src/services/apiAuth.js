@@ -11,3 +11,16 @@ export async function login({ email, password }) {
   }
   return data;
 }
+
+export async function getCurrUser() {
+  const { data: session } = await supabase.auth.getSession();
+  if (!session) {
+    return null;
+  }
+
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
+
+  return user;
+}
