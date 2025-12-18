@@ -1,0 +1,26 @@
+import styled from "styled-components";
+import Logout from "../features/authentication/Logout";
+import { ButtonIcon } from "./ButtonIcon";
+import { HiOutlineUser } from "react-icons/hi";
+import { useNavigate } from "react-router-dom";
+
+const StyledHeaderMenu = styled.ul`
+  display: flex;
+  gap: 0.4rem;
+`;
+
+export default function HaderMenu() {
+  const navigate = useNavigate();
+  return (
+    <StyledHeaderMenu>
+      <lil>
+        <ButtonIcon onClick={() => navigate("/account")}>
+          <HiOutlineUser />
+        </ButtonIcon>
+      </lil>
+      <lil>
+        <Logout />
+      </lil>
+    </StyledHeaderMenu>
+  );
+}

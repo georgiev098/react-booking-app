@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import useUser from "./useUser";
 
 const StyledUserAvatar = styled.div`
   display: flex;
@@ -19,3 +20,17 @@ const Avatar = styled.img`
   border-radius: 50%;
   outline: 2px solid var(--color-grey-100);
 `;
+
+export default function UserAvatar() {
+  const { user } = useUser();
+  console.log(user);
+  const { fullName, avatar } = user.user_metadata;
+  const defaultAvatarPath = "../../../public/default-user.jpg";
+
+  return (
+    <StyledUserAvatar>
+      <Avatar src={avatar || defaultAvatarPath} alt={`Avatar of ${fullName}`} />
+      <span>{fullName}</span>
+    </StyledUserAvatar>
+  );
+}
