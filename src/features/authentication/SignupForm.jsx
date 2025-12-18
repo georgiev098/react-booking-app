@@ -3,15 +3,22 @@ import Button from "../../ui/Button";
 import Form from "../../ui/Form";
 import FormRow from "../../ui/FormRow";
 import Input from "../../ui/Input";
+import useSignUp from "./useSignUp";
 
 // Email regex: /\S+@\S+\.\S+/
 
 export default function SignupForm() {
-  const { register, formState, getValues, handleSubmit } = useForm();
+  const { register, formState, getValues, handleSubmit, reset } = useForm();
+  const { mutate, isLoading } = useSignUp();
   const { errs } = formState;
 
-  function onSubmit(data) {
-    console.log(data);
+  function onSubmit({ email, password, fullName }) {
+    mutate(
+      { email, password, fullName },
+      {
+        onSettled: () => reset(),
+      }
+    );
   }
   return (
     <Form onSubmit={handleSubmit(onSubmit)}>
@@ -19,6 +26,7 @@ export default function SignupForm() {
         <Input
           type="text"
           id="fullName"
+          disabled={isLoading}
           {...register("fullName", { required: "This field is required" })}
         />
       </FormRow>
@@ -27,6 +35,7 @@ export default function SignupForm() {
         <Input
           type="email"
           id="email"
+          disabled={isLoading}
           {...register("email", {
             required: "This field is required",
             pattern: {
@@ -44,6 +53,7 @@ export default function SignupForm() {
         <Input
           type="password"
           id="password"
+          disabled={isLoading}
           {...register("password", {
             required: "This field is required",
             minLength: {
@@ -58,6 +68,7 @@ export default function SignupForm() {
         <Input
           type="password"
           id="passwordConfirm"
+          disabled={isLoading}
           {...register("passwordConfirm", {
             required: "This field is required",
             validate: (value) => {

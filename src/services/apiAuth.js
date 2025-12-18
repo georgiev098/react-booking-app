@@ -30,3 +30,18 @@ export async function logout() {
   let { error } = await supabase.auth.signOut();
   return error;
 }
+
+export async function signUp({ email, password, fullName }) {
+  let { data, error } = await supabase.auth.signUp({
+    email,
+    password,
+    options: {
+      data: {
+        fullName,
+        avatar: "",
+      },
+    },
+  });
+
+  return { data, error };
+}
