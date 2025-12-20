@@ -13,14 +13,14 @@ export default function HaderMenu() {
   const navigate = useNavigate();
   return (
     <StyledHeaderMenu>
-      <lil>
+      <li>
         <ButtonIcon onClick={() => navigate("/account")}>
           <HiOutlineUser />
         </ButtonIcon>
-      </lil>
-      <lil>
+      </li>
+      <li>
         <Logout />
-      </lil>
+      </li>
     </StyledHeaderMenu>
   );
 }
