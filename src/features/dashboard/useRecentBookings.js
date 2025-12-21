@@ -16,6 +16,5 @@ export default function useRecentBookings() {
     queryFn: () => getBookingsAfterDate(queryDate),
     queryKey: ["bookings", `last-${numDays}`],
   });
-
   return { isLoading, data };
 }
