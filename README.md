@@ -69,7 +69,7 @@ The application uses Supabase as its backend, which provides a PostgreSQL databa
 - **users** to manage user profiles. (id, email, name, avatarUrl)
 
 ## Live Demo
-A live demo of the application is available at: [https://your-demo-link.com](https://your-demo-link.com)
+A live demo of the application is available at: [Here](https://react-booking-app-seven.vercel.app/dashboard)
 You can use the following test credentials to log in:
 - Email: yarow99009@gamintor.com
 - Password: 12345678
