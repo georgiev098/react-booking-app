@@ -10,17 +10,18 @@ import useUpdateUserData from "./useUpdateUserData";
 import useUser from "./useUser";
 
 export default function UpdateUserDataForm() {
-  // We don't need the loading state, and can immediately use the user data, because we know that it has already been loaded at this point
-  const {
-    user: {
-      email,
-      user_metadata: { fullName: currentFullName },
-    },
-  } = useUser();
+  const { user } = useUser();
 
-  const [fullName, setFullName] = useState(currentFullName);
+  const [fullName, setFullName] = useState("");
   const [avatar, setAvatar] = useState(null);
   const { isLoading, mutate } = useUpdateUserData();
+
+  if (!user) return null;
+
+  const {
+    email,
+    user_metadata: { fullName: currentFullName },
+  } = user;
 
   function handleSubmit(e) {
     e.preventDefault();

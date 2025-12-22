@@ -6,7 +6,7 @@ export default function useUser() {
     isLoading,
     data: user,
     error,
-  } = useQuery({ queryKey: ["user"], queryFn: getCurrUser });
+  } = useQuery({ queryKey: ["user"], queryFn: getCurrUser, retry: false });
 
   return {
     isLoading,
