@@ -42,7 +42,7 @@ Users can browse cabins, create and manage bookings, update profile information.
 Clone the repository:
 
 ```bash
-git clone https://github.com/your-username/react-booking-app.git
+git clone https://github.com/georgiev098/react-booking-app
 cd react-booking-app
 ```
 Install dependencies:
@@ -69,7 +69,7 @@ The application uses Supabase as its backend, which provides a PostgreSQL databa
 - **users** to manage user profiles. (id, email, name, avatarUrl)
 
 ## Live Demo
-A live demo of the application is available at: [Here](https://react-booking-app-seven.vercel.app/dashboard)
+A live demo of the application is available at: [Here](https://react-booking-app-seven.vercel.app/)
 You can use the following test credentials to log in:
 - Email: yarow99009@gamintor.com
 - Password: 12345678
